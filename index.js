@@ -57,8 +57,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   if (isNaN(exerciseDate.getTime())) {
     return res.status(400).json({ error: 'Invalid date format' });
   }
-
-  const formattedDate = exerciseDate.toISOString().split('T')[0];
+  const formattedDate = exerciseDate.toDateString();   
   const exercise = {
     description,
     duration: parseInt(duration, 10),
