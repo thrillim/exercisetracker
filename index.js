@@ -100,7 +100,15 @@ app.get('/api/users/:_id/logs', (req, res) => {
       return res.status(400).json({ error: 'Invalid limit' });
     }
     logs = logs.slice(0, limitNumber);
-  } 
+  }
+
+  // ensure each log entry has only description, duration, date
+  const responseLogs = logs.map(({ description, duration, date }) => ({
+    description,
+    duration,
+    date
+  }));
+
   res.json({
     _id: user._id,
     username: user.username,
