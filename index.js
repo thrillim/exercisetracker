@@ -66,7 +66,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   res.status(201).json(result);
 })
 
-app.get('/api/users/:_id/logs?[from][&to][&limit]', (req, res) => {
+app.get('/api/users/:_id/logs', (req, res) => {
   const user = users.find(u => u._id === req.params._id);
   if (!user) {
     return res.status(400).json({ error: 'Unknown userId' });
